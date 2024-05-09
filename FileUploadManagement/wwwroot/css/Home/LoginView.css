@@ -1,0 +1,77 @@
+﻿body {
+}
+
+.LoginBackground {
+    position: absolute;
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,28,68);
+    background: linear-gradient(150deg, rgba(0,28,68,1) 0%, rgba(141,172,201,1) 100%);
+    padding-top: 70px;
+    /*padding-bottom: 200px;*/
+}
+
+.LoginLogoSection {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.LoginSpacer {
+    background-color: #f3f3f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: fit-content;
+    padding: 100px 4% 200px;
+    border-radius: 20px;
+    /*margin-bottom: 300px;*/
+    box-shadow: 6px 6px 30px -17px rgba(0,0,0,0.7);
+}
+
+.avisoText{
+    height: 20px;
+}
+
+.LoginMainBlock {
+    padding: 40px 30px;
+    max-width: 1000px;
+    width: 100%;
+    border-top: 1px solid #bebfc1;
+    border-bottom: 1px solid #bebfc1;
+}
+
+.LoginForm{
+    width: 100%;
+    height: 100%;
+}
+
+.LoginInput{
+    margin-top: 10px;
+    max-width: 500px;
+    height: 40px;
+    font-family: sans-serif;
+    border: 1px solid #aaa;
+}
+
+.LoginButton{
+    height: 60px;
+    width: 100%;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.LoginLogo{
+    width: 100%;
+    margin: 10px 0px;
+    max-width: 300px;
+    height: auto;
+}

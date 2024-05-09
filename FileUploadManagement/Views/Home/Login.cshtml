@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+
+<div class="LoginBackground">
+    <div class="LoginSpacer">
+        <div class="row LoginMainBlock">
+            <div class="col-md-6 LoginLogoSection">
+                <h2 class="font-bold">Sistema DIRETÓRIO da <img src="~/images/logotipo_topo.png" class="LoginLogo" /></h2>
+                <p>
+                    Acesso Restrito.
+                </p>
+                <h6 id="aviso" class="avisoText"></h6>
+            </div>
+            <div class="col-md-6 LoginFormSection">
+                <form class="LoginForm" role="form">
+                    <div class="form-group">
+                        <input id="user" autocomplete="username" class="form-control LoginInput" placeholder="Usuário" required="" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <input id="password" autocomplete="current-password" type="password" class="form-control LoginInput" placeholder="Senha" required="" maxlength="20">
+                    </div>
+                    <button id="enviar" type="button" class="btn btn-primary LoginButton">
+                        <div id="loginText">Login</div>
+                        <i id="loginSpinner" class="fa-solid fa-spinner fa-spin fa-xl"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+
+    <link rel="stylesheet" href="~/css/Home/LoginView.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+}
+@section Scripts{
+
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js" defer></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="module" src="~/js/Home/Views/LoginView.js?v=@Configuration.GetValue(typeof(string), "VERSION")"></script>
+
+}
+

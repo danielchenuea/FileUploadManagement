@@ -1,0 +1,24 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "target": "es2015",
+    "outDir": "wwwroot/js",
+    "rootDir": "./TSScripts",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "include": [
+    "TSScripts/**/*",
+    "setup.jest.js"  
+  ],
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

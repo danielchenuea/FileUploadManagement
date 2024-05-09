@@ -1,0 +1,25 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="basicUploadWeb">
+
+    <h2 id="avisoUpload">123</h2>
+    <input id="uploadFiles" multiple type="file" />
+    <button id="submitFiles">Upload</button>
+</div>
+
+
+@section Styles {
+
+    <link rel="stylesheet" href="~/css/Home/Basic.css">
+
+}
+@section Scripts {
+
+    <script type="module" src="~/js/Main/Views/MainView.js?v=@Configuration.GetValue(typeof(string), "VERSION")"></script>
+
+}
+
