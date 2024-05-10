@@ -9,6 +9,7 @@ namespace FileUploadManagement.ApplicationServices
     public interface IFileUploadApplicationServices
     {
         DataResponse Get_ListaReferenciasArquivo();
+        DataResponse Get_ReferenciasArquivo(Guid guid);
         DataResponse Post_ReferenciaArquivo(ArquivoArmazenado arquivo);
     }
 
@@ -23,12 +24,22 @@ namespace FileUploadManagement.ApplicationServices
 
         public DataResponse Get_ListaReferenciasArquivo()
         {
-            var dt = PersistenciaDB.ExecuteDataQuery(GetArquivo());
+            var dt = PersistenciaDB.ExecuteDataQuery(GetListaArquivo());
 
             var result = JsonConvert.DeserializeObject<List<ArquivoArmazenado>>(JsonConvert.SerializeObject(dt));
             if (result == null) throw new Exception("A query não foi executada corretamente.");
 
             return DataResponse.ResultadoValido(result);
+        }
+
+        public DataResponse Get_ReferenciasArquivo(Guid guid)
+        {
+            var dt = PersistenciaDB.ExecuteDataQuery(GetArquivo(guid));
+
+            var result = JsonConvert.DeserializeObject<List<ArquivoArmazenado>>(JsonConvert.SerializeObject(dt));
+            if (result == null) throw new Exception("A query não foi executada corretamente.");
+
+            return DataResponse.ResultadoValido(result[0]);
         }
 
         public DataResponse Post_ReferenciaArquivo(ArquivoArmazenado arquivo)
@@ -40,7 +51,7 @@ namespace FileUploadManagement.ApplicationServices
             return DataResponse.ResultadoValidoNoContent();
         }
 
-        private static QueryExecution GetArquivo()
+        private static QueryExecution GetListaArquivo()
         {
             #region QueryInformation e SQL
 
@@ -59,6 +70,34 @@ SELECT
     ARQ.DATA_INSERCAO
 FROM
     {DadosPersistencia.TabelaFiles} ARQ
+";
+            #endregion
+
+            return QueryExecution.CreateQuery(sql, param);
+        }
+        private static QueryExecution GetArquivo(Guid guid)
+        {
+            #region QueryInformation e SQL
+
+            var param = new List<OracleParameter> {
+                new OracleParameter("GUID_ARQUIVO", OracleDbType.Raw, 16) { Value = guid }
+            };
+
+            string sql = $@"
+SELECT
+    UPPER(SUBSTR(HEXTORAW(ARQ.GUID), 7, 2) || SUBSTR(HEXTORAW(ARQ.GUID), 5, 2) || 
+    SUBSTR(HEXTORAW(ARQ.GUID), 3, 2) || SUBSTR(HEXTORAW(ARQ.GUID), 1, 2) ||
+    SUBSTR(HEXTORAW(ARQ.GUID), 11, 2)|| SUBSTR(HEXTORAW(ARQ.GUID), 9, 2) ||
+    SUBSTR(HEXTORAW(ARQ.GUID), 15, 2)|| SUBSTR(HEXTORAW(ARQ.GUID), 13, 2)||
+    SUBSTR(HEXTORAW(ARQ.GUID), 17, 4)|| SUBSTR(HEXTORAW(ARQ.GUID), 21, 12)) AS GUID_ARQUIVO,
+    ARQ.NOME AS NOME_ARQUIVO,
+    ARQ.TIPO AS TIPO_ARQUIVO,
+    ARQ.MIMO AS MIMO_ARQUIVO,
+    ARQ.DATA_INSERCAO
+FROM
+    {DadosPersistencia.TabelaFiles} ARQ
+WHERE
+    ARQ.GUID = :GUID_ARQUIVO
 ";
             #endregion
 

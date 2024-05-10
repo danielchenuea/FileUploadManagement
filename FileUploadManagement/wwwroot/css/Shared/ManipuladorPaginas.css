@@ -1,0 +1,78 @@
+﻿
+.manipuladorPaginasDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    margin: 20px 0px;
+}
+
+.linhaManageTable {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin: 0px 1% 0px;
+}
+
+.botaoSeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #aaaaaaaa;
+    border-radius: 4px;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    transition: 0.03s all;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+    .botaoSeta:not(.disabled):hover {
+        background-color: #f6f6f6;
+    }
+
+    .botaoSeta:not(.disabled):active {
+        background-color: #f0f0f0;
+        box-shadow: inset 0px 0px 4px 0px rgba(0,0,0,0.5);
+    }
+
+    .botaoSeta.disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+.divLinhaMidia {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#botaoSetaEsquerda {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#botaoSetaDireita {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.botaoDisplayPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #aaaaaaaa;
+    border-left: 0px;
+    border-right: 0px;
+    width: 116px;
+    min-width: 36px;
+    height: 36px;
+    transition: 0.03s all;
+    background-color: #fff;
+    user-select: none;
+}

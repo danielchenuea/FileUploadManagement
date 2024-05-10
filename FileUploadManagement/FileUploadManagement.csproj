@@ -36,6 +36,7 @@
     <PackageReference Include="System.ServiceModel.Http" Version="6.2.0" />
     <PackageReference Include="System.ServiceModel.NetTcp" Version="6.2.0" />
     <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
+    <PackageReference Include="WebApiThrottle" Version="1.5.4" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using FileUploadManagement.DAO;
 using FileUploadManagement.Models.HttpIn;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.CodeAnalysis;
 using Microsoft.Net.Http.Headers;
@@ -30,16 +31,25 @@ namespace FileUploadManagement.Controllers.Upload
         }
         [HttpGet]
         [Route("GetUploadedFile/{fileName}")]
-        public IActionResult GetUploadedFile([FromRoute] string fileName = "Area comum 2 (Pequeno)")
+        public IActionResult GetUploadedFile([FromRoute] Guid fileName)
         {
             var request = HttpContext.Request;
 
+            ArquivoArmazenado? arquivo = (ArquivoArmazenado?)_FileUploadApplicationServices.Get_ReferenciasArquivo(fileName).Data;
+
+            if (arquivo == null) return NotFound();
+
             var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Services", "Files");
 
-            string stringsFile = Directory.GetFiles(imagePath).First(el => el.Contains(fileName));
-            string mime = MimeMapping.MimeUtility.GetMimeMapping(stringsFile);
+            string? stringsFile = Directory.GetFiles(imagePath).FirstOrDefault(el => el.Contains(fileName.ToString()));
 
-            return PhysicalFile(stringsFile, mime);
+            if (stringsFile == null) return NotFound();
+
+            //string mime = MimeMapping.MimeUtility.GetMimeMapping(arquivo.);
+            Response.ContentType = arquivo.MIMO_ARQUIVO;
+            Response.Headers.Add("inline", "");
+            Response.Headers.Add("attachment", "");
+            return PhysicalFile(stringsFile, arquivo.MIMO_ARQUIVO, arquivo.NOME_ARQUIVO);
         }
 
         /// <summary>
@@ -102,7 +112,7 @@ namespace FileUploadManagement.Controllers.Upload
                     // Get the temporary folder, and combine a random file name with it
                     //var fileName = Path.GetRandomFileName();
                     var dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Services", "Files");
-                    var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Services", "Files", guid.ToString() + "." + tipoArquivo);
+                    var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Services", "Files", guid.ToString());
                     Directory.CreateDirectory(dirPath);
 
                     using (var targetStream = System.IO.File.Create(filePath))

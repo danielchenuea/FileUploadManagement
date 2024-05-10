@@ -1,0 +1,262 @@
+﻿
+.modalDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background: #303030aa;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 30;
+}
+.modalContent{
+    width: 400px;
+    height: fit-content;
+
+}
+.closeButton {
+    border: 1px #aaaaaaaa solid;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    transition: 0.1s ease-in-out;
+}
+.closeButton:hover {
+    background-color: #eaeaea;
+    box-shadow: inset 0px 0px 4px 0px rgba(0,0,0,0.5);
+}
+.closeButton:active {
+    background-color: #e5e5e5;
+    box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+/* MODAL SETTINGS */
+
+.modalSettingsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalDivisory {
+    width: 96%;
+    height: 1px;
+    padding: 0px 2%;
+    border-bottom: 1px solid #000;
+    margin: 24px 0px 20px;
+}
+
+.titleSettings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.filenameSettings{
+    font-weight: 600;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.contentLineSettings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.botaoSalvarSettings {
+    width: 180px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #00334d;
+    margin: 15px 0px;
+    color: white;
+    transition: 0.1s all ease-in-out;
+}
+    .botaoSalvarSettings:hover {
+        background-color: #38567A;
+    }
+    .botaoSalvarSettings:disabled {
+        background-color: #00334d;
+        opacity: 0.6;
+    }
+
+
+/* CARROSSEL DE IMAGENS */
+
+.carrosselImagemDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.carrosselDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.botaoSetaDisplayPage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border: 1px solid #aaa;
+}
+.botaoSetaDisplayPage > img {
+    position: relative;
+    width: inherit;
+    height: auto;
+    cursor: pointer;
+    top: 0px;
+}
+.nameDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #aaa;
+    white-space: nowrap;
+    font-size: 14px;
+    transition: 0.15s all ease-in-out;
+}
+.nameDiv:has(span.error){
+    background-color: #f5000030;
+}
+.nameDiv:has(span.alerta) {
+    background-color: #ffcc0030;
+}
+.nameDiv:has(span.noContent) {
+    color: #aaaaaa;
+}
+
+.deleteDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+}
+.removeImageButton {
+    border: 1px #aaaaaaaa solid;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #d00000;
+    transition: 0.1s ease-in-out;
+    margin-top: 0px;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+    .removeImageButton:hover {
+        background-color: #c00000;
+        box-shadow: inset 0px 0px 4px 0px rgba(0,0,0,0.5);
+    }
+
+    .removeImageButton:active {
+        background-color: #b00000;
+        box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);
+    }
+
+
+.carrosselContent {
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+}
+
+.iconButtonWrapper {
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+}
+.iconButton {
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: 0.1s all ease-in-out;
+}
+
+    .iconButton.noContent {
+        background-color: #ddd;
+        opacity: 0.6;
+    }
+
+    .iconButton {
+        cursor: pointer;
+    }
+
+        .iconButton:hover {
+            background-color: #f0f0f0;
+        }
+
+        .iconButton:active {
+            background-color: #e0e0e0;
+            box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.5);
+        }
+
+    .iconButton i {
+        /*background-color: white;*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 96px;
+        width: 96px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        transition: 0.2s background-color ease-in-out;
+    }
+
+
+
+.modalContentLoading {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #00000040;
+    border-radius: 0.3rem;
+    z-index: 10;
+    pointer-events: none;
+}
+
+    .modalContentLoading i {
+        font-size: 4.5em;
+    }
